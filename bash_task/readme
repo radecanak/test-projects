@@ -1,0 +1,2 @@
+Task: Write a bash script that displays all the files of a directory tree matching a given regexp
+./ll.sh . --filter=\*.bak*

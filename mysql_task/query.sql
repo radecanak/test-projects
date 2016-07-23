@@ -1,0 +1,1 @@
+SELECT Product FROM ProductPrices WHERE Cost < (SELECT avg(Cost) FROM ProductPrices);

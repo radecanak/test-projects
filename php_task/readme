@@ -1,0 +1,13 @@
+Task: Compose an EventEmitter component that implements the following interface
+
+interface EventEmitterInterface
+{
+    public function on(string $event, callable $listener);
+    public function removeListener(string $event, callable $listener);
+    public function removeAllListeners(string $event = null);
+    public function emit(string $event, ...$arguments);
+}
+
+
+Run phpunit tests:
+php.exe phpunit-5.3.2.phar test.php

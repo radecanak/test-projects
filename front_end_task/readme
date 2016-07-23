@@ -1,0 +1,18 @@
+Task:
+The imaginary app has user settings panel where user can toggle options: `Launch on PC start` and `Launch minimized in system tray`. When an option control changes its state the block toolbox appears (Save and Cancel buttons), so user can confirm their choice. Both buttons have on-hover state. When cancel is clicked the form returns into the previous state. If save is clicked the state is saved into the localStorage. Obviously, state gets restored during view initializing.
+Styling doesn’t need to be pixel perfect, but still it will show how good the applicant deals with HTML semantics and CSS.
+The icons for the navigation menu can be taken from http://ionicons.com/
+Requirements
+We expect component-based SASS, free of CSS “bad smells”. We will see how the applicant follows best practices such as Tag/Location independence, reusability.
+JavaScript 
+•	CommonJS modules that being transpiled for in-browser JavaScript; 
+•	The abstraction based on Backbone.js(http://backbonejs.org) or Exoskeleton.js (http://exosjs.com);
+•	No use of helper libs such jQuery/Zepta, Underscore, LoDash – just Vanilla JavaScript (EcmaScript 5 rev.  or ECMAScript 2015 or TypeScript);
+
+
+Conversion sass to css style:
+gem install sass
+sass --watch test.sass:test.css
+
+CommonJS modules which are transpiled for in-browser JavaScript (RequireJS) are defined on locations: js\app\models and js\app\models\views 
+

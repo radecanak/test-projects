@@ -1,0 +1,11 @@
+Task: Retrieve all the products that cost less than than the average product cost
+
+Mysql:
+
+Table: ProductPrices
+Id | Product          |   Cost
+1  | 12000 Kredits    |  99.99
+2  |  5200 Kredits    |  49.99
+3  |  2400 Kredits    |  29.99
+4  |   800 Kredits    |   8.99
+5  |   400 Kredits    |   4.99

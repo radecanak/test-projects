@@ -1,0 +1,145 @@
+$light_blue: #8aa0c1
+$light_blue2: #189ac4
+$dark_blue: #f2f2f2
+$left_side_background_color:#1e2f3d
+$selected_option_background_color:#17232d
+$content_background_color:#3c545e
+input[type="checkbox"]
+    display: none
+
+input[type="checkbox"] + label
+    color: $dark_blue
+    font-family: Arial, sans-serif
+    font-size: 14px
+
+input[type="checkbox"] + label
+    display: inline-block
+    width: 18px
+    height: 18px
+    margin: -1px 4px 0 0
+    vertical-align: middle
+    background: url(../img/check_radio_sheet.png) left top no-repeat
+    cursor: pointer
+
+input[type="checkbox"]:checked + label
+    background: url(../img/check_radio_sheet.png) -19px top no-repeat
+
+input[type="button"]
+    border-style: none
+    font-size: 8px
+    padding: 4px
+
+#cancel_button
+    color: $light_blue
+    background-color: transparent
+
+#cancel_button:hover
+    color: $light_blue2
+    background-color: transparent
+    border-color: $light_blue2
+    border-style: solid
+    border-width: 1px
+
+#save_button
+    color: white
+    background-color: $light_blue2
+    border-color: $light_blue2
+    border-style: solid
+    border-width: 1px
+
+#save_button:hover
+    background-color: white
+    color: $light_blue2
+
+#saved_button
+    border-color: $light_blue
+    border-style: solid
+    border-width: 1px
+    color: $light_blue
+    background-color: transparent
+
+#username
+    color: white
+    text-align: center
+    font-size: 25px
+    margin-top: 10px
+
+.selected_option
+    color: white
+    background-color: $selected_option_background_color
+    font-size: 11px
+    margin-top: 20px
+
+.account
+    color: $light_blue
+    font-size: 11px
+    margin-top: 20px
+
+#settings_label
+    color: white
+    font-size: 25px
+
+.description
+    color: $light_blue
+    font-size: 11px
+    margin-top: 10px
+
+.description_launch_minimized
+    color: $light_blue
+    font-size: 11px
+    margin-top: 20px
+
+#general
+    color: white
+    font-size: 11px
+    margin-top: 20px
+    padding-bottom: 10px
+    border-bottom: 1px solid #000
+
+#content
+    min-width: 800px
+    background-color: $content_background_color
+
+#left_side
+    display: inline-block
+    background-color: $left_side_background_color
+    padding: 30px
+    width: 180px
+
+#right_side
+    display: inline-block
+    vertical-align: top
+    padding: 30px
+
+#logo
+    width: 62px
+    height: 62px
+    border-radius: 150px
+    -webkit-border-radius: 150px
+    -moz-border-radius: 150px
+    background: url(../img/user.jpg) no-repeat
+    background-size: 62px 62px
+    background-position: center
+    margin: 0 auto
+
+#status_buttons
+    float: right
+    margin-top: 20px
+    margin-right: -15px
+
+#cancel_button
+    width: 70px
+    display: none
+
+#save_button
+    width: 70px
+    margin-left: 4px
+    display: none
+
+#saved_button
+    width: 70px
+    margin-left: 4px
+    display: none
+
+.checkbox_option
+    float: right
