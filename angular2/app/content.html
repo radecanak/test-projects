@@ -1,0 +1,15 @@
+<h1>Test App</h1>
+<h2>File Storage</h2>
+<div id="upload_file">
+	<input type="file" value="Choose File" accept="image/*" #image_file (change)="onChooseFile(add_button)">
+	<input type="button" value="Add Image" #add_button (click)="onAddImage(image_file)"
+	[disabled]="image_file.files.length==0">
+	<input type="button" value="Remove Selected Images" #remove_button disabled="false" (click)="onRemoveSelectedImages()"
+	>
+</div>
+<div id="image_items">
+	<image-item *ngFor="let imageItem of imageItems"
+		(selectedItemChanged)="onSelectedItemChanged(remove_button)" 
+		[imageItem]="imageItem">
+	</image-item>
+</div>

@@ -1,0 +1,4 @@
+Steps:
+ - npm install
+ - service.py should be started.
+ - npm start

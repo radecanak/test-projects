@@ -1,0 +1,59 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+body {
+  margin: 2em;
+}
+
+#image_items
+{
+	width:800px;
+	margin-top: 20px;		
+}
+
+.image_item
+{
+	border-width: 1px;
+	border-style: solid;
+	margin:10px 10px 10px 0;
+	display:inline-block;
+}
+
+.image_item::after
+{
+	content: "";
+	clear: left;
+}
+
+.image_item>input[type="checkbox"]
+{
+	display:block;
+	margin:10px 10px 10px 10px;
+}
+
+.image_file_name
+{
+	margin: 10px;	
+}
+
+
+.img_item
+{
+	width: 200px;
+	height: 200px;
+/*	float: right;*/
+}
+
+#upload_file
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+ /*
+  * See https://github.com/angular/angular.io/blob/master/public/docs/_examples/styles.css
+  * for the full set of master styles used by the documentation samples
+  */
