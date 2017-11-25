@@ -1,0 +1,7 @@
+'''
+Settings
+'''
+SQLSERVER_HOST = "DESKTOP-VUPVHLP\\SQLEXPRESS"
+SQLSERVER_DB = "EmployeeMaintenance"
+SQLSERVER_USERNAME = "sa"
+SQLSERVER_PASSWORD = "rade"

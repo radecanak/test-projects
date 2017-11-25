@@ -1,0 +1,444 @@
+2017-11-25 09:42:25,918 - ERROR - name 'Person' is not defined
+Traceback (most recent call last):
+  File "service.py", line 54, in add_person
+    person = Person(person_id, last_name, first_name, birth_date)
+NameError: name 'Person' is not defined
+2017-11-25 09:42:50,780 - ERROR - name 'Person' is not defined
+Traceback (most recent call last):
+  File "service.py", line 54, in add_person
+    person = Person(person_id, last_name, first_name, birth_date)
+NameError: name 'Person' is not defined
+2017-11-25 09:44:10,759 - ERROR - name 'cls' is not defined
+Traceback (most recent call last):
+  File "service.py", line 55, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 44, in save
+    if self.person_id != 0 else cls.get_table().insert(None), \
+NameError: name 'cls' is not defined
+2017-11-25 09:45:21,472 - ERROR - name 'Integer' is not defined
+Traceback (most recent call last):
+  File "service.py", line 55, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 44, in save
+    if self.person_id != 0 else PersonModel.get_table().insert(None), \
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 29, in get_table
+    Column('PersonId', Integer, primary_key=True), \
+NameError: name 'Integer' is not defined
+2017-11-25 09:45:50,589 - ERROR - (pyodbc.IntegrityError) ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'FirstName', table 'EmployeeMaintenance.dbo.Person'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)") [SQL: 'INSERT INTO [Person] ([LastName], [FirstName], [BirthDate]) OUTPUT inserted.[PersonId] VALUES (?, ?, ?)'] [parameters: ('test last name', None, datetime.datetime(1982, 4, 26, 0, 0))]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.IntegrityError: ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'FirstName', table 'EmployeeMaintenance.dbo.Person'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "service.py", line 55, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 45, in save
+    LastName=self.last_name, FirstName=self.first_name, BirthDate=self.birth_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\sql\elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (pyodbc.IntegrityError) ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'FirstName', table 'EmployeeMaintenance.dbo.Person'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)") [SQL: 'INSERT INTO [Person] ([LastName], [FirstName], [BirthDate]) OUTPUT inserted.[PersonId] VALUES (?, ?, ?)'] [parameters: ('test last name', None, datetime.datetime(1982, 4, 26, 0, 0))]
+2017-11-25 10:51:29,016 - ERROR - Not an executable object: <sqlalchemy.engine.result.ResultProxy object at 0x06352730>
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 941, in execute
+    meth = object._execute_on_connection
+AttributeError: 'ResultProxy' object has no attribute '_execute_on_connection'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 93, in get_person
+    person.getdata()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 61, in getdata
+    item = Database.connection.execute(Database.connection.execute(PersonModel.get_table().select(PersonModel.get_table().c.PersonId == self.person_id)))
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 943, in execute
+    raise exc.ObjectNotExecutableError(object)
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: <sqlalchemy.engine.result.ResultProxy object at 0x06352730>
+2017-11-25 10:52:33,473 - ERROR - Not an executable object: <sqlalchemy.engine.result.ResultProxy object at 0x0605FC50>
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 941, in execute
+    meth = object._execute_on_connection
+AttributeError: 'ResultProxy' object has no attribute '_execute_on_connection'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 93, in get_person
+    person.getdata()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 61, in getdata
+    item = Database.connection.execute(Database.connection.execute(PersonModel.get_table().select(PersonModel.get_table().c.PersonId == self.person_id)))
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 943, in execute
+    raise exc.ObjectNotExecutableError(object)
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: <sqlalchemy.engine.result.ResultProxy object at 0x0605FC50>
+2017-11-25 10:55:34,062 - ERROR - 'ResultProxy' object is not subscriptable
+Traceback (most recent call last):
+  File ".\service.py", line 93, in get_person
+    person.getdata()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 62, in getdata
+    self.person_id = item["person_id"]
+TypeError: 'ResultProxy' object is not subscriptable
+2017-11-25 10:56:42,405 - ERROR - 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File ".\service.py", line 93, in get_person
+    person.getdata()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 62, in getdata
+    self.person_id = item["person_id"]
+TypeError: 'NoneType' object is not subscriptable
+2017-11-25 10:58:03,445 - ERROR - argument of type 'NoneType' is not iterable
+Traceback (most recent call last):
+  File ".\service.py", line 93, in get_person
+    person.getdata()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 62, in getdata
+    self.last_name = item["last_name"] if "last_name" in item else ""
+TypeError: argument of type 'NoneType' is not iterable
+2017-11-25 11:43:01,692 - ERROR - name 'Date' is not defined
+Traceback (most recent call last):
+  File ".\service.py", line 133, in add_employee
+    employee.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\employee_model.py", line 46, in save
+    if self.employee_id != 0 else EmployeeModel.get_table().insert(None), \
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\employee_model.py", line 34, in get_table
+    Column('EmployedDate', Date), \
+NameError: name 'Date' is not defined
+2017-11-25 11:46:26,101 - ERROR - (pyodbc.IntegrityError) ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'PersonId', table 'EmployeeMaintenance.dbo.Employee'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)") [SQL: 'INSERT INTO [Employee] ([EmployeeNum], [EmployedDate], [TerminatedDate]) OUTPUT inserted.[EmployeeId] VALUES (?, ?, ?)'] [parameters: ('5', datetime.datetime(2017, 4, 26, 0, 0), datetime.datetime(2016, 4, 26, 0, 0))]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.IntegrityError: ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'PersonId', table 'EmployeeMaintenance.dbo.Employee'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 133, in add_employee
+    employee.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\employee_model.py", line 47, in save
+    EmployeeNum=self.employee_num, EmployedDate=self.employed_date, TerminatedDate=self.terminated_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\sql\elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (pyodbc.IntegrityError) ('23000', "[23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'PersonId', table 'EmployeeMaintenance.dbo.Employee'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW)") [SQL: 'INSERT INTO [Employee] ([EmployeeNum], [EmployedDate], [TerminatedDate]) OUTPUT inserted.[EmployeeId] VALUES (?, ?, ?)'] [parameters: ('5', datetime.datetime(2017, 4, 26, 0, 0), datetime.datetime(2016, 4, 26, 0, 0))]
+2017-11-25 11:51:35,304 - ERROR - name 'person_id' is not defined
+Traceback (most recent call last):
+  File ".\service.py", line 133, in add_employee
+    employee.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\employee_model.py", line 47, in save
+    PersonId=person_id, EmployeeNum=self.employee_num, EmployedDate=self.employed_date, TerminatedDate=self.terminated_date)
+NameError: name 'person_id' is not defined
+2017-11-25 11:57:08,277 - ERROR - type object 'PersonModel' has no attribute 'delete_by_personid'
+Traceback (most recent call last):
+  File ".\service.py", line 103, in delete_person
+    PersonModel.delete_by_personid(person_id)
+AttributeError: type object 'PersonModel' has no attribute 'delete_by_personid'
+2017-11-25 11:58:01,950 - ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File ".\service.py", line 103, in delete_person
+    EmployeeModel.delete_by_personid(person_id)
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\employee_model.py", line 64, in delete_by_personid
+    Database.connection.execute(EmployeeModel.get_table().delete(EmployeeModel.get_table().c.PersonId == self.person_id))
+NameError: name 'self' is not defined
+2017-11-25 12:42:59,919 - ERROR - 'NoneType' object has no attribute 'commit'
+Traceback (most recent call last):
+  File ".\service.py", line 81, in add_person
+    Database.session.commit()
+AttributeError: 'NoneType' object has no attribute 'commit'
+2017-11-25 12:54:43,292 - ERROR - (pyodbc.ProgrammingError) ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (?,?,?);SELECT SCOPE_IDENTITY(); '] [parameters: {'FirstName': 'test last name', 'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 45, in save
+    LastName=self.last_name, FirstName=self.first_name, BirthDate=self.birth_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 939, in execute
+    return self._execute_text(object, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1097, in _execute_text
+    statement, parameters
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (?,?,?);SELECT SCOPE_IDENTITY(); '] [parameters: {'FirstName': 'test last name', 'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+2017-11-25 12:57:47,222 - ERROR - (pyodbc.ProgrammingError) ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (?,?,?); '] [parameters: {'LastName': 'test first name', 'FirstName': 'test last name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 45, in save
+    LastName=self.last_name, FirstName=self.first_name, BirthDate=self.birth_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 939, in execute
+    return self._execute_text(object, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1097, in _execute_text
+    statement, parameters
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('The SQL contains 3 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (?,?,?); '] [parameters: {'LastName': 'test first name', 'FirstName': 'test last name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+2017-11-25 12:58:39,950 - ERROR - (pyodbc.ProgrammingError) ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: "INSERT INTO Person (LastName, FirstName, BirthDate) VALUES ('?','?','?'); "] [parameters: {'FirstName': 'test last name', 'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 45, in save
+    LastName=self.last_name, FirstName=self.first_name, BirthDate=self.birth_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 939, in execute
+    return self._execute_text(object, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1097, in _execute_text
+    statement, parameters
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: "INSERT INTO Person (LastName, FirstName, BirthDate) VALUES ('?','?','?'); "] [parameters: {'FirstName': 'test last name', 'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0)}]
+2017-11-25 13:01:17,211 - ERROR - (pyodbc.ProgrammingError) ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (:LastName,:FirstName,:BirthDate); '] [parameters: {'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0), 'FirstName': 'test last name'}]
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 45, in save
+    LastName=self.last_name, FirstName=self.first_name, BirthDate=self.birth_date)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 939, in execute
+    return self._execute_text(object, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1097, in _execute_text
+    statement, parameters
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('The SQL contains 0 parameter markers, but 1 parameters were supplied', 'HY000') [SQL: 'INSERT INTO Person (LastName, FirstName, BirthDate) VALUES (:LastName,:FirstName,:BirthDate); '] [parameters: {'LastName': 'test first name', 'BirthDate': datetime.datetime(1982, 4, 26, 0, 0), 'FirstName': 'test last name'}]
+2017-11-25 13:03:17,639 - ERROR - This result object does not return rows. It has been closed automatically.
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1055, in _fetchone_impl
+    return self.cursor.fetchone()
+AttributeError: 'NoneType' object has no attribute 'fetchone'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 47, in save
+    fetch = result.fetchone()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1183, in fetchone
+    self.cursor, self.context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1405, in _handle_dbapi_exception
+    util.reraise(*exc_info)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1174, in fetchone
+    row = self._fetchone_impl()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1057, in _fetchone_impl
+    return self._non_result(None)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1077, in _non_result
+    "This result object does not return rows. "
+sqlalchemy.exc.ResourceClosedError: This result object does not return rows. It has been closed automatically.
+2017-11-25 13:04:23,422 - ERROR - This result object does not return rows. It has been closed automatically.
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1055, in _fetchone_impl
+    return self.cursor.fetchone()
+AttributeError: 'NoneType' object has no attribute 'fetchone'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 47, in save
+    fetch = result.fetchone()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1183, in fetchone
+    self.cursor, self.context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1405, in _handle_dbapi_exception
+    util.reraise(*exc_info)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1174, in fetchone
+    row = self._fetchone_impl()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1057, in _fetchone_impl
+    return self._non_result(None)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1077, in _non_result
+    "This result object does not return rows. "
+sqlalchemy.exc.ResourceClosedError: This result object does not return rows. It has been closed automatically.
+2017-11-25 13:16:43,498 - ERROR - This result object does not return rows. It has been closed automatically.
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1055, in _fetchone_impl
+    return self.cursor.fetchone()
+AttributeError: 'NoneType' object has no attribute 'fetchone'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 47, in save
+    fetch = result.fetchone()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1183, in fetchone
+    self.cursor, self.context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1405, in _handle_dbapi_exception
+    util.reraise(*exc_info)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1174, in fetchone
+    row = self._fetchone_impl()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1057, in _fetchone_impl
+    return self._non_result(None)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1077, in _non_result
+    "This result object does not return rows. "
+sqlalchemy.exc.ResourceClosedError: This result object does not return rows. It has been closed automatically.
+2017-11-25 13:19:44,732 - ERROR - This result object does not return rows. It has been closed automatically.
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1055, in _fetchone_impl
+    return self.cursor.fetchone()
+AttributeError: 'NoneType' object has no attribute 'fetchone'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 47, in save
+    fetch = result.fetchone()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1183, in fetchone
+    self.cursor, self.context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1405, in _handle_dbapi_exception
+    util.reraise(*exc_info)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1174, in fetchone
+    row = self._fetchone_impl()
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1057, in _fetchone_impl
+    return self._non_result(None)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\result.py", line 1077, in _non_result
+    "This result object does not return rows. "
+sqlalchemy.exc.ResourceClosedError: This result object does not return rows. It has been closed automatically.
+2017-11-25 13:23:01,485 - ERROR - (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'ID'. (207) (SQLExecDirectW)") [SQL: 'SELECT MAX(ID) FROM Person']
+Traceback (most recent call last):
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'ID'. (207) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ".\service.py", line 80, in add_person
+    person.save()
+  File "C:\Users\John\source\repos\ClientWS\WebService\EmployeeMaintenanceWebService\EmployeeMaintenanceWebService\models\person_model.py", line 47, in save
+    self.person_id =  Database.connection.execute("SELECT MAX(ID) FROM Person").fetchone()[0]
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 939, in execute
+    return self._execute_text(object, multiparams, params)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1097, in _execute_text
+    statement, parameters
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1189, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1402, in _handle_dbapi_exception
+    exc_info
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\python34\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\base.py", line 1182, in _execute_context
+    context)
+  File "C:\python34\lib\site-packages\sqlalchemy\engine\default.py", line 470, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'ID'. (207) (SQLExecDirectW)") [SQL: 'SELECT MAX(ID) FROM Person']
