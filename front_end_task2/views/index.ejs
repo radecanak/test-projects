@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<link rel="stylesheet" type="text/css" href="http://akottr.github.io/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="http://akottr.github.io/css/akottr.css" />
+<link rel="stylesheet" type="text/css" href="/js/dragtable-master/dragtable.css" />
+
+<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="/js/dragtable-master/jquery.dragtable.js"></script>
+
+<!-- only for jquery.chili-2.2.js -->
+<script src="http://code.jquery.com/jquery-migrate-1.1.1.js"></script>
+<script type="text/javascript" src="http://akottr.github.io/js/jquery.chili-2.2.js"></script>
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+
+    
+    <script type="text/javascript" class="init">
+  
+function init_dragtable(table_id, index)
+{  
+    //window.localStorage.removeItem('tableorder' + index);
+    //window.localStorage.removeItem('tableorder');
+    $(table_id).dragtable({
+        persistState: function(table) {
+          if (!window.localStorage) return;
+        var ss = window.localStorage;
+          table.el.find('th').each(function(i) {
+            if(this.id != '') {table.sortOrder[this.id]=i;}
+          });
+          ss.setItem('tableorder' + index,JSON.stringify(table.sortOrder));
+        },
+        restoreState: eval('(' + window.localStorage.getItem('tableorder' + index) + ')')
+    });
+}
+    
+$(document).ready(function() {
+    init_dragtable('#table_0', 0);
+	init_dragtable('#table_1', 1);
+    init_dragtable('#table_2', 2);
+    
+    var num_tweets = localStorage.getItem("num_tweets");
+    $("#num_tweets")[0].value = num_tweets != null ? num_tweets : <%= settings.number_tweets %>;
+    
+    var from_year = localStorage.getItem("from_year");
+    $("#from_year")[0].value = from_year != null ? from_year : <%= settings.from_year %>;
+    var from_month = localStorage.getItem("from_month");
+    $("#from_month")[0].value = from_month != null ? from_month : <%= settings.from_month %>;
+    var from_day = localStorage.getItem("from_day");
+    $("#from_day")[0].value = from_day != null ? from_day : <%= settings.from_day %>;
+    var from_hour = localStorage.getItem("from_hour");
+    $("#from_hour")[0].value = from_hour != null ? from_hour : <%= settings.from_hour %>;
+    var from_minute = localStorage.getItem("from_minute");
+    $("#from_minute")[0].value = from_minute != null ? from_minute : <%= settings.from_minute %>;
+    
+    var to_year = localStorage.getItem("to_year");
+    $("#to_year")[0].value = to_year != null ? to_year : <%= settings.to_year %>;
+    var to_month = localStorage.getItem("to_month");
+    $("#to_month")[0].value = to_month != null ? to_month : <%= settings.to_month %>;
+    var to_day = localStorage.getItem("to_day");
+    $("#to_day")[0].value = to_day != null ? to_day : <%= settings.to_day %>;
+    var to_hour = localStorage.getItem("to_hour");
+    $("#to_hour")[0].value = to_hour != null ? to_hour : <%= settings.to_hour %>;
+    var to_minute = localStorage.getItem("to_minute");
+    $("#to_minute")[0].value = to_minute != null ? to_minute : <%= settings.to_minute %>;
+    
+    var background_color_picker = localStorage.getItem("background_color_picker");
+    $("#background_color_picker")[0].value = background_color_picker != null ? background_color_picker : "ffffff";
+    
+    $("#background_color_picker").css('background-color', '#' + (background_color_picker != null ? background_color_picker : "ffffff"));
+    $("#body").css('background-color', '#' + (background_color_picker != null ? background_color_picker : "ffffff"));
+    var color_picker = localStorage.getItem("color_picker");
+    $("#color_picker")[0].value = color_picker != null ? color_picker : "000000";
+    $("#color_picker").css('background-color', '#' + (color_picker != null ? color_picker : "000000"));
+    $("#body").css('color', '#' + (color_picker != null ? color_picker : "000000"));
+    $("#num_tweets").on('change', function() {
+        localStorage.setItem("num_tweets",$("#num_tweets")[0].value);
+    });
+    
+    $("#from_year").on('change', function() {
+        localStorage.setItem("from_year",$("#from_year")[0].value);
+    });
+    $("#from_month").on('change', function() {
+        localStorage.setItem("from_month",$("#from_month")[0].value);
+    });
+    $("#from_day").on('change', function() {
+        localStorage.setItem("from_day",$("#from_day")[0].value);
+    });
+    $("#from_hour").on('change', function() {
+        localStorage.setItem("from_hour",$("#from_hour")[0].value);
+    });
+    $("#from_minute").on('change', function() {
+        localStorage.setItem("from_minute",$("#from_minute")[0].value);
+    });
+    
+    $("#to_year").on('change', function() {
+        localStorage.setItem("to_year",$("#to_year")[0].value);
+    });
+    $("#to_month").on('change', function() {
+        localStorage.setItem("to_month",$("#to_month")[0].value);
+    });
+    $("#to_day").on('change', function() {
+        localStorage.setItem("to_day",$("#to_day")[0].value);
+    });
+    $("#to_hour").on('change', function() {
+        localStorage.setItem("to_hour",$("#to_hour")[0].value);
+    });
+    $("#to_minute").on('change', function() {
+        localStorage.setItem("to_minute",$("#to_minute")[0].value);
+    });
+    
+    $('#background_color_picker').on('change', function() {
+        background_color = $("#background_color_picker")[0].value;
+        localStorage.setItem("background_color_picker",background_color);
+        $("#body").css('background-color', '#' + (background_color != null ? background_color : "ffffff"));
+    });
+    $('#color_picker').on('change', function() {
+        color = $("#color_picker")[0].value;
+        localStorage.setItem("color_picker",color);
+        $("#body").css('color', '#' + (color != null ? color : "000000"));
+    });
+});
+
+function change_visibility(){
+    if(document.getElementById('settings').style.display == "inline")
+    {
+        document.getElementById('settings').style.display = "none";
+        document.getElementById('settins_button').innerHTML  = "Show Settings";
+    }
+    else
+    {
+        document.getElementById('settings').style.display = "inline";
+        document.getElementById('settins_button').innerHTML  = "Hide Settings";
+       
+    };
+
+  }
+
+     </script>
+<body id="body">
+
+<button id="settins_button"  onClick="change_visibility();">Show Settings</button>
+<div id="settings" style="display:none;"> 
+    <form action="/" method="post">
+      <div class="setting_option">
+            The time range of the tweets shown:<br>
+          <div>
+              <div>From</div>
+              <span class="time_label" >Year:</span>
+              <select name="from_year" id="from_year">
+                <% for(var i=2018; i<2020; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label">Month:</span>
+              <select name="from_month" id="from_month">
+                <% for(var i=1; i<13; i++) {%>
+                <option value="<%= i %>" ><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Day:</span>
+              <select name="from_day" id="from_day">
+                <% for(var i=1; i<32; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Hour:</span>
+              <select name="from_hour" id="from_hour">
+                <% for(var i=0; i<24; i++) {%>
+                <option value="<%= i %>" ><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Minute:</span>
+              <select name="from_minute" id="from_minute">
+                <% for(var i=0; i<60; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+          </div>
+          <div>
+              <div>To</div>
+              <span class="time_label" >Year:</span>
+              <select name="to_year" id="to_year">
+                <% for(var i=2018; i<2020; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Month:</span>
+              <select name="to_month" id="to_month">
+                <% for(var i=1; i<13; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Day:</span>
+              <select name="to_day" id="to_day">
+                <% for(var i=1; i<32; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Hour:</span>
+              <select name="to_hour" id="to_hour">
+                <% for(var i=0; i<24; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <span class="time_label" >Minute:</span>
+              <select name="to_minute" id="to_minute" >
+                <% for(var i=0; i<60; i++) {%>
+                <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+          </div>
+      </div>
+       <div class="setting_option">
+        <label for="number_tweets" >The number of tweets shown in each column:
+            <input type="number" name="number_tweets" id="num_tweets" >
+        </label >
+      </div>
+      
+        
+      <div class="setting_option">
+        The overall palette/skin of the page:<br>
+        <label for="background_color_picker" >Background:<br>
+            <input id="background_color_picker" class="jscolor" value="ffffff">
+        </label >
+        <br>
+        <label for="color_picker" >Color:<br>
+            <input id="color_picker" class="jscolor" value="ffffff">
+        </label >
+      </div>
+        
+      
+        
+        
+      <div class="setting_option">
+      <input type="submit" value="Save">
+      </div>
+    </form> 
+   
+</div>
+
+<% for(var k=0; k<all_results.length; k++) {%>
+    <br>Tweets: <%= all_results[k].tweet %><br>
+    <table id="table_<%= k%>">
+        <tr>
+            
+            <th class="content_column" id="lst_content_<%= k%>">Content</th>
+            <th class="url_column" id="lst_url_<%= k%>">Url</th>
+            <th class="user_column" id="lst_user_<%= k%>">Users</th>
+            <th class="created_column" id="lst_created_at_<%= k%>">Created At</th>
+        </tr>
+        <% for(var i=0; i<all_results[k].items.length; i++) {%>
+            <tr>
+                   <td class="content_column"><%= all_results[k].items[i]["Content"] %></td>
+                   <td class="url_column"><a href="<%= all_results[k].items[i]["Url"] %>"><%= all_results[k].items[i]["Url"] %></a></td>
+                   <td class="user_column"><%= all_results[k].items[i]["Users"] %></td>
+                   <td class="created_column"><%= all_results[k].items[i]["Created At"] %></td>
+            </tr>
+         <% } %>
+    </table>
+<% } %>
+
+
+</body>
+</html>

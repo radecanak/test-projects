@@ -1,0 +1,37 @@
+.time_label
+{
+    width: 40px;
+    display: inline-block;
+}
+
+#num_tweets
+{
+    width: 50px;
+    text-align: right;
+}
+
+.setting_option
+{
+    margin: 10px;
+}
+
+.content_column
+{
+    width: 400px;
+}
+
+.url_column
+{
+    width: 150px;
+}
+
+.user_column
+{
+    width: 80px;
+}
+
+.created_column
+{
+    width: 120px;
+}
+
